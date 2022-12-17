@@ -1,6 +1,6 @@
-# Blog
+# Source
 
-Source for [website](https://lenguyenthanh.com).
+Source for [my blog](https://thanh.se).
 
 ### Credit
 
