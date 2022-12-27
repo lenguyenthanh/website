@@ -33,7 +33,7 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
-    forM_ ["images/*", "resume.pdf", "CNAME"] $ \f -> match f $ do
+    forM_ ["images/*", "resume.pdf", "CNAME", "fonts/*"] $ \f -> match f $ do
         route   idRoute
         compile copyFileCompiler
 

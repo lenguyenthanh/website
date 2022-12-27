@@ -1,9 +1,14 @@
-rm public/*
+// remove everything
+git -C public rm -rf .
+git -C public clean -fxd
+
 site rebuild
 cp -r _site/ public/
 
 # Go To Public folder
 cd public
+
+touch .nojekyll
 # Add changes to git.
 git add .
 
