@@ -3,7 +3,8 @@
 import           Data.Monoid (mappend)
 import           Control.Monad (forM_)
 import           Hakyll
-
+import Text.Pandoc.Highlighting (Style, tango, styleToCss)
+import Text.Pandoc.Options      (ReaderOptions (..), WriterOptions (..))
 
 --------------------------------------------------------------------------------
 main :: IO ()
@@ -20,6 +21,11 @@ main = hakyll $ do
             csses <- loadAll "css/*.css"
             makeItem $ unlines $ map itemBody $ tufte : csses
 
+    create ["css/syntax.css"] $ do
+      route idRoute
+      compile $ do
+        makeItem $ styleToCss pandocCodeStyle
+
     match (fromList ["about.md"]) $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
@@ -28,7 +34,7 @@ main = hakyll $ do
 
     match "posts/*" $ do
         route $ setExtension "html"
-        compile $ pandocCompiler
+        compile $ pandocCompiler'
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
@@ -51,7 +57,6 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
 
-
     match "index.html" $ do
         route idRoute
         compile $ do
@@ -67,9 +72,20 @@ main = hakyll $ do
 
     match "templates/*" $ compile templateBodyCompiler
 
-
 --------------------------------------------------------------------------------
 postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
     defaultContext
+
+pandocCodeStyle :: Style
+pandocCodeStyle = tango
+
+pandocCompiler' :: Compiler (Item String)
+pandocCompiler' =
+  pandocCompilerWith
+    defaultHakyllReaderOptions
+    defaultHakyllWriterOptions
+      { writerHighlightStyle   = Just pandocCodeStyle
+      }
+
