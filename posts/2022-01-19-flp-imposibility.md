@@ -52,7 +52,7 @@ Khi thiết kế một thuật toán về Distributed System thì System Model l
 Paper này sẽ chứng minh rằng không tồn tại thuật toán Consensus với những điều kiện sau:
 
 - Asynchronos Model
-- Messages System là đáng tin cậy 
+- Messages System là đáng tin cậy
     - Tất cả các *message* đều được deliver đến các *non-faulty process* một và chỉ một lần (nhưng có thể nhận trễ một cách bất kỳ).
 - Chỉ cân nhắc lỗi *crash-stop failure* - bị lỗi và dừng hẳn
     - Ở đây chúng ta chỉ xem xét về lỗi crash-stop failure - trường hợp lỗi đơn giản nhất. Do đó với những mô hình lỗi phức tạp hơn thì chúng ta sẽ có cùng kết quả.
@@ -99,7 +99,7 @@ Gọi tập `M` là tập hợp của tất cả các *message*.
 
 #### Message Buffer
 
-Tất cả các *message* (đã gửi nhưng chưa được nhận) sẽ được lưu trữ trong một cơ sở dữ liệu tên là `Multiset` được gọi là `Message Buffer(MB)`. 
+Tất cả các *message* (đã gửi nhưng chưa được nhận) sẽ được lưu trữ trong một cơ sở dữ liệu tên là `Multiset` được gọi là `Message Buffer(MB)`.
 
 `Multiset` sẽ khác với `Set` thông thường ở một điểm đó là nó có thể lưu nhiều phần tử có giá trị giống nhau.
 
@@ -145,7 +145,7 @@ Một *Configuration (C)* của hệ thống bao gồm:
     - $m \in M \cup \phi$
     - $MB' = MB \setminus m$
 2. Gọi `e = (p, m)` thì e sẽ được gọi là một *Event*
-3. Sử dụng *Transistion Function* để apply *event e* vào *p*: 
+3. Sử dụng *Transistion Function* để apply *event e* vào *p*:
     - $(p_I', MS) = e(p) = TF(e, p_I)$
     - $p_I'$ là state mới của *p* sau khi apply `e(p)`
     - `MS` là một tập *message* mới mà *p* muốn gửi tới `MB` khi apply `e(p)`
@@ -158,7 +158,7 @@ Hay *step* là sự apply một *event e* vào một *configuration C*: `C' = e(
 
 #### Faulty/Non-faulty Process
 
-Một *process p* được coi là hoạt động bình thường (non-faulty) khi nó thực thi *step* vô hạn lần (tương đương với việc gọi `receive(p)` vô hạn lần). Nếu ngược lại thì *process* đó sẽ được coi là lỗi (faulty). 
+Một *process p* được coi là hoạt động bình thường (non-faulty) khi nó thực thi *step* vô hạn lần (tương đương với việc gọi `receive(p)` vô hạn lần). Nếu ngược lại thì *process* đó sẽ được coi là lỗi (faulty).
 
 ### Schedule
 
