@@ -2,6 +2,7 @@
 title: "FLP Impossibility"
 date: 2022-01-19T11:35:12Z
 math: true
+tags: distributed system, flp, theory, vietnamese
 ---
 
 ## Giới thiệu

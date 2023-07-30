@@ -1,7 +1,14 @@
 ---
 title: "You should not use traverseWithIndexM"
 date: 2023-07-30
+tags: scala, functional programming, cats, typelevel
 ---
+
+In this post, We'll talk about Scala [cats](https://typelevel.org/cats)'s traverseWithIndexM':
+
+- What is traverseWithIndexM
+- Benchmark of traverseWithIndexM in comparison with other isomorphic functions
+- Conclusion
 
 ## What is traverseWithIndexM
 
