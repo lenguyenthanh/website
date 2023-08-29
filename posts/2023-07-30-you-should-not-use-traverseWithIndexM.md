@@ -1,5 +1,5 @@
 ---
-title: "You should not use traverseWithIndexM"
+title: "You Should Not Use traverseWithIndexM"
 date: 2023-07-30
 tags: scala, functional programming, cats, typelevel
 ---
@@ -106,7 +106,7 @@ CatsTraverseWithIndex.zipTraverse           100000  thrpt   45     126.553 ±   
 CatsTraverseWithIndex.zipTraverse         10000000  thrpt   45       0.419 ±    0.023  ops/s
 ```
 
-We can see that *traverseWithIndexM* is always slower than its colleagues. More than two times slower when the size of the collections are small, the gap is smaller when the size is increased. But that not the only problem with *traverseWithIndexM*, here is the flamegraph produced with [async-profiler](https://github.com/async-profiler/async-profiler) of *traverseWithIndexM* and *zip.traverse* when running benchmark with size of 1000, side by side.
+In all benchmarks, higher numbers are better. We can see that *traverseWithIndexM* is always slower than its colleagues. More than two times slower when the size of the collections are small, the gap is smaller when the size is increased. But that not the only problem with *traverseWithIndexM*, here is the flamegraph produced with [async-profiler](https://github.com/async-profiler/async-profiler) of *traverseWithIndexM* and *zip.traverse* when running benchmark with size of 1000, side by side.
 
 ![flamegraph](/images/2023-07-flamegraph.png)
 
